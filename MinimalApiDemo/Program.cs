@@ -1,8 +1,7 @@
 using Microsoft.EntityFrameworkCore;
+using MinimalApiDemo;
 using MinimalApiDemo.Data;
-using MinimalApiDemo.EndPoints;
 using MinimalApiDemo.Models;
-using MinimalApiDemo.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
 
