@@ -1,31 +1,16 @@
 ﻿using System.Data;
+using Microsoft.EntityFrameworkCore;
+using MinimalApiDemo.Models;
 using MySql.Data.MySqlClient;
 
 namespace MinimalApiDemo.Data
 {
-    public class MySqlDbContext
+    public class MySqlDbContext:DbContext
     {
-        private readonly string _connectionString;
-
-        public MySqlDbContext(string connectionString)
+        public MySqlDbContext(DbContextOptions<MySqlDbContext> options):base (options)
         {
-            _connectionString = connectionString;
+            
         }
-
-        public MySqlConnection GetConnection()
-        {
-            var conn = new MySqlConnection(_connectionString);
-            conn.Open();
-            return conn;
-        }
-
-        public MySqlCommand CreateCommand(string spName, MySqlConnection conn)
-        {
-            var cmd = new MySqlCommand(spName, conn)
-            {
-                CommandType = CommandType.StoredProcedure
-            };
-            return cmd;
-        }
+        public DbSet<Student> students { get; set; }
     }
 }
